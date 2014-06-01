@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link href="/css/app.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="chat">
+      <ul class="messages" >
+        <li v-repeat="messages" v-text="$value"></li>
+      </ul>
+      <form action="" v-on="submit: post">
+        <input v-model="input" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/0.10.4/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+    </script>
+  </body>
+</html>
