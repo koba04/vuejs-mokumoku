@@ -1,21 +1,58 @@
 var socket = io();
 
-vm = new Vue({
-  el: "#chat",
+
+var Login = Vue.extend({
   data: {
-    messages: [],
-    input: ""
+    id: "hoge",
+    password: "foo",
   },
   methods: {
-    post: function(e) {
-      socket.emit('chat message', this.input);
-      e.preventDefault();
+    login: function() {
+      socket.emit("login", this.id, this.password);
     }
   }
 });
 
-socket.on('chat message', function(msg){
-  vm.messages.push(msg);
+var Chat = Vue.extend({
+  data: {
+    messages: [],
+    message: ""
+  },
+  ready: function() {
+    var that = this;
+    socket.on("chat:message", function (message) {
+      that.messages.push(message);
+    });
+  },
+  methods: {
+    say: function() {
+      if (this.message) {
+        socket.emit("chat:message", this.message);
+      }
+    }
+  }
+
 });
 
+new Vue({
+  el: "#main",
+  data: {
+    user: null,
+    message: ""
+  },
+  ready: function() {
+    var that = this;
+    socket.on("login:success", function(user) {
+      that.user = user;
+      that.message = "";
+    });
+    socket.on("login:fail", function(message) {
+      that.message = message
+    });
+  },
+  components: {
+    login: Login,
+    chat: Chat
+  }
+});
 

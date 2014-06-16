@@ -12,8 +12,16 @@ app.use(express.static(__dirname + '/public'));
 
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat:message', function(msg){
+    io.emit('chat:message', msg);
+  });
+  socket.on("login", function(id, pass) {
+    console.log("login:" + id + ":" + pass);
+    if (id === "koba" && pass === "04") {
+      socket.emit("login:success", "koba04");
+    } else {
+      socket.emit("login:fail", "(T_T)");
+    }
   });
 });
 
