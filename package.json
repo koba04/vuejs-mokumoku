@@ -1,14 +1,14 @@
 {
-  "name": "YAPCin",
+  "name": "VueMokuMoku",
   "version": "0.1.0",
-  "description": "YAPC::ASIA check in app",
+  "description": "Vue.js MokuMoku",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:koba04/yapcin.git"
+    "url": "git@bitbucket.org:koba04/vuejs-mokumoku.git"
   },
   "author": "koba04",
   "license": "MIT",
