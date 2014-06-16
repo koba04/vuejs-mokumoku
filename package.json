@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:koba04/vuejs-mokumoku.git"
+    "url": "git@github.com:koba04/vuejs-mokumoku.git"
   },
   "author": "koba04",
   "license": "MIT",
